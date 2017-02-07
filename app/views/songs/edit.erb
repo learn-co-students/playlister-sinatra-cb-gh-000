@@ -1,0 +1,41 @@
+<% if @song %>
+  <form action="/songs/<%= @song.slug %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <p>
+      <label for="name">Name</label>
+      <input id="name" type="text" name="song[name]" value="<%= @song.name %>">
+    </p>
+    <p>
+      <label for="artist_name">Artist Name</label>
+      <input id="artist_name" type="text" name="artist[name]" value="<%= @song.artist.name %>">
+    </p>
+    <p>
+      Genres:
+      <% @genres.each_with_index do |genre, i| %>
+        <label for="genre_<%= i %>"><%= genre.name %></label>
+        <input id="genre_<%= i %>" type="checkbox" name="song[genre_ids][]" value="<%= genre.id %>" <%= "checked" if @song.genres.include?(genre) %>>
+      <% end %>
+    </p>
+    <input type="submit" name="submit" value="Save">
+  </form>
+<% else %>
+  <form action="/songs" method="post">
+    <input type="hidden" name="_method" value="put">
+    <p>
+      <label for="name">Name</label>
+      <input id="name" type="text" name="song[name]" value="">
+    </p>
+    <p>
+      <label for="artist_name">Artist Name</label>
+      <input id="artist_name" type="text" name="artist[name]" value="">
+    </p>
+    <p>
+      Genres:
+      <% @genres.each_with_index do |genre, i| %>
+        <label for="genre_<%= i %>"><%= genre.name %></label>
+        <input id="genre_<%= i %>" type="checkbox" name="song[genre_ids][]" value="<%= genre.id %>">
+      <% end %>
+    </p>
+    <input type="submit" name="submit" value="Create">
+  </form>
+<% end %>
