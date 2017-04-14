@@ -1,0 +1,5 @@
+<% @objects.each do |object| %>
+  <p>
+    <%= object.name%> <a href="/<%=object.class.to_s.downcase%>s/<%=object.slug%>">Show</a>
+  </p>
+<%end%>
