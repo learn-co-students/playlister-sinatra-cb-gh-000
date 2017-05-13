@@ -7,7 +7,7 @@ class Artist < ActiveRecord::Base
     special_chars = "!?$"
 
     slug = name.downcase
-    slug.tr!(special_chars, "X")
+    slug.tr!(special_chars, "")
     slug.tr!(" ", "-")
   end
 
