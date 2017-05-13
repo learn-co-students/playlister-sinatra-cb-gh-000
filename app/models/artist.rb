@@ -5,8 +5,12 @@ class Artist < ActiveRecord::Base
   def slug
     special_chars = "!?$"
 
-    slug = self.name
+    slug = name
     slug.tr!(special_chars, "X")
     slug.tr!(" ", "-")
+  end
+
+  def self.find_by_slug(slug)
+    all.find { |artist| artist.slug == slug }
   end
 end
