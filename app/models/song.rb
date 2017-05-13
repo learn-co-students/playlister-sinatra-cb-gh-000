@@ -3,5 +3,15 @@ class Song < ActiveRecord::Base
   has_many :song_genres
   has_many :genres, through: :song_genres
 
-  # TODO - Build a method slug which takes a given song name and creates the "slugified" version.
+  def slug
+    special_chars = "!?$"
+
+    slug = name
+    slug.tr!(special_chars, "X")
+    slug.tr!(" ", "-")
+  end
+
+  def self.find_by_slug(slug)
+    all.find { |song| song.slug == slug }
+  end
 end
