@@ -1,11 +1,12 @@
 class Artist < ActiveRecord::Base
   has_many :songs
-  has_many :genres, through: :songs
+  has_many :song_genres, through: :songs
+  has_many :genres, through: :song_genres
 
   def slug
     special_chars = "!?$"
 
-    slug = name
+    slug = name.downcase
     slug.tr!(special_chars, "X")
     slug.tr!(" ", "-")
   end

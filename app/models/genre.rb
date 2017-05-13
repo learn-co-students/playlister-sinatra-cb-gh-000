@@ -6,7 +6,7 @@ class Genre < ActiveRecord::Base
   def slug
     special_chars = "!?$"
 
-    slug = name
+    slug = name.downcase
     slug.tr!(special_chars, "X")
     slug.tr!(" ", "-")
   end
