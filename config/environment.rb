@@ -5,7 +5,6 @@ Bundler.require(:default, ENV['SINATRA_ENV'])
 
 configure do
   set :database, 'sqlite3:db/database.db'
-  enable :sessions
 end
 
 ActiveRecord::Base.establish_connection(
