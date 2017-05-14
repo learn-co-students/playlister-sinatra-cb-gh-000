@@ -4,6 +4,7 @@ module Slugifiable
       slug = name.downcase
       slug.gsub!(/[^0-9A-Za-z\s]/, '')
       slug.gsub!(/[\s]/, '-')
+      slug
     end
   end
 
