@@ -1,11 +1,9 @@
 module Slugifiable
   module InstanceMethods
     def slug
-      special_chars = "!?$!@#%^&*()[]{}"
-
       slug = name.downcase
-      slug.tr!(special_chars, "")
-      slug.tr!(" ", "-")
+      slug.gsub!(/[^0-9A-Za-z\s]/, '')
+      slug.gsub!(/[\s]/, '-')
     end
   end
 
