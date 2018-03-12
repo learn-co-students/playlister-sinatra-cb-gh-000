@@ -10,7 +10,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 ActiveRecord::Base.logger = nil
-
+# ActiveRecord::Base.logger = Logger.new(STDOUT)
 RSpec.configure do |config|
   config.run_all_when_everything_filtered = true
   config.filter_run :focus
