@@ -12,7 +12,7 @@ describe "Playlister Basics" do
 
     @song.song_genres.create(genre: @genre)
     @song.artist = @artist
-  
+
     @song.save
   end
 
@@ -109,6 +109,7 @@ describe "Playlister Basics" do
       end
 
       it "displays the artist's songs" do
+        # binding.pry
         expect(page).to have_content(song_name)
       end
 
@@ -131,6 +132,7 @@ describe "Playlister Basics" do
       end
 
       it 'responds with a 200 status code' do
+        # binding.pry
         expect(page.status_code).to eq(200)
       end
 
